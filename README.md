@@ -10,6 +10,11 @@ To works fine nagios user needs to be on docker group (usermod -aG docker nagios
 
 * Can be executed from inside a docker container.
 It only needs access to unix socket file from docker host.
+```markdown
+You need add nagios user to deocker group inside docker container.
+To do that you can execute (docker group ID can change)
+echo "docker:x:993:nagios" >> /etc/group
+```
 
 * Output string can be on graphite format adding --enable-performance-data argument.
 
