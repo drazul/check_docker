@@ -81,6 +81,9 @@ class Docker(object):
 
     def __get_net_io_bytes(self, stats):
         # via https://github.com/docker/docker/blob/e884a515e96201d4027a6c9c1b4fa884fc2d21a3/api/client/container/stats_helpers.go#L226-234
+        if not 'networks' in stats:
+            return 0, 0
+
         rx = 0
         tx = 0
         for interface, network in stats['networks'].items():
